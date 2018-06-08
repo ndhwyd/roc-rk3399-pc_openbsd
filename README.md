@@ -28,16 +28,45 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_01.png "PINE64 Installer 1")
 
-* Click on button "Choose an OS"
-* Select "ROCK64" in the drop-down menu
-* Select "Browse image file from local drive"
+* Click on button **Choose an OS**
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_02.png "PINE64 Installer 2")
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_03.png "PINE64 Installer 3")
+
+* Select **ROCK64** in the drop-down menu
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_04.png "PINE64 Installer 4")
+
+* Select **Browse image file from local drive**
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_05.png "PINE64 Installer 5")
+
 * Select the downloaded U-Boot SPI flasher image
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_06.png "PINE64 Installer 6")
+
 * Choose the correct microSD card
-* Click on the button "Flash"
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_07.png "PINE64 Installer 7")
+
+* Click on the button **Flash**
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_08.png "PINE64 Installer 8")
+
+* After successfully flashing close the PINE64 Installer and remove the microSD card
 * Put the flashed microSD card in the ROCK64
 * Connect the USB-RS232-TTL converter with the ROCK64
 * Start minicom with the baud rate 1500000
+
+```
+$ minicom -8 -D /dev/ttyUSB0 -b 1500000
+```
+
 * Power-On the ROCK64
+* Wait unil you see following:
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/flash.png "Flash")
 
 ### Step 2 - Install OpenBSD
 
@@ -54,11 +83,22 @@ $ dd if=miniroot63.fs of=/dev/sde
 
 * Put the microSD card in the ROCK64
 * Start minicom with the baud rate 115200
+
+```
+minicom -8 -D /dev/ttyUSB0 -b 115200
+```
+
 * Power-On the ROCK64
-* Wait until you see the OpenBSD Installer message
-* Install openBSD: Follow the steps of the OpenBSD installer
+* Wait until you see the OpenBSD Installer message:
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/openbsd_installer.png "OpenBSD Installer")
+
+* Install OpenBSD: Follow the steps of the OpenBSD installer
+* After successfull installation reboot OpenBSD
 
 ### Step 3 - Have fun with OpenBSD on the ROCK64!
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/openbsd_hello.png "OpenBSD Welcome")
 
 ##### Credits:
 
