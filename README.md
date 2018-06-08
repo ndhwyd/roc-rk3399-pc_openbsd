@@ -3,7 +3,7 @@
 **Required hardware**
 
 * ROCK64 media board
-* USB-RS232-TTL converter (Attention: Use 3.3V only)
+* USB-RS232-TTL converter (**Attention:** Use 3.3V only)
 * microSD card
 
 **Required software tools**
@@ -12,14 +12,14 @@
 
 Link: https://github.com/pine64dev/PINE64-Installer/blob/master/README.md
 
-* U-Boot SPI Flasher
+* ayufun's U-Boot SPI Flasher
 * Terminal (like minicom)
 
 ### Step 1 - Flash U-Boot in SPI-EEPROM from the ROCK64
 
 * Download the current PINE64 Installer
 * Extract the PINE64 Installer
-* Download the current U-Boot SPI flasher image from here: 
+* Download the current U-Boot SPI flasher image from ayufan's github page here: 
 
 Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-boot-flash-spi-rock64.img.xz
 
@@ -38,9 +38,9 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 
 ### Step 2 - Install OpenBSD
 
-* Download the file "miniroot63.fs":
+* Download the file "miniroot63.fs" form the OpenBSD's mirrors
 
-Example Link: ftp://ftp2.eu.openbsd.org/pub/OpenBSD/snapshots/arm64/
+Link: https://ftp2.eu.openbsd.org/pub/OpenBSD/snapshots/arm64/ (Example link)
 
 * Open the terminal
 * Type the following (as example - change the command where you have downloaded the file minirooot63.fs and the correct device for the microSD card):
@@ -56,3 +56,7 @@ $ dd if=miniroot63.fs of=/dev/sde
 * Install openBSD: Follow the steps of the OpenBSD installer
 
 ### Step 3 - Have fun with OpenBSD on the ROCK64!
+
+##### Credits:
+
+Thanks to Mark Kettenis from the OpenBSD ARM mailing-list.
