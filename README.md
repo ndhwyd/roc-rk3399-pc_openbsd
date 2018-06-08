@@ -39,7 +39,9 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 ### Step 2 - Install OpenBSD
 
 * Download the file "miniroot63.fs":
+
 Example Link: ftp://ftp2.eu.openbsd.org/pub/OpenBSD/snapshots/arm64/
+
 * Open the terminal
 * Type the following (as example - change the command where you have downloaded the file minirooot63.fs and the correct device for the microSD card):
 
