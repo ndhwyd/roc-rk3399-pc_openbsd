@@ -42,8 +42,9 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 Example Link: ftp://ftp2.eu.openbsd.org/pub/OpenBSD/snapshots/arm64/
 * Open the terminal
 * Type the following (as example - change the command where you have downloaded the file minirooot63.fs and the correct device for the microSD card):
-```$ dd if=miniroot63.fs of=/dev/sde
-```
+
+$ dd if=miniroot63.fs of=/dev/sde
+
 * Put the microSD card in the ROCK64
 * Start minicom with the baud rate 115200
 * Power-On the ROCK64
