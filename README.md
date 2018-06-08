@@ -3,13 +3,15 @@
 **Required hardware**
 
 * ROCK64 media board
-* USB to RS232 ttl converter (Attention: Use 3.3V only)
+* USB-RS232-TTL converter (Attention: Use 3.3V only)
 * microSD card
 
 **Required software tools**
 
 * PINE64 Installer
+
 Link: https://github.com/pine64dev/PINE64-Installer/blob/master/README.md
+
 * U-Boot SPI Flasher
 * Terminal (like minicom)
 
@@ -18,7 +20,9 @@ Link: https://github.com/pine64dev/PINE64-Installer/blob/master/README.md
 * Download the current PINE64 Installer
 * Extract the PINE64 Installer
 * Download the current U-Boot SPI flasher image from here: 
+
 Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-boot-flash-spi-rock64.img.xz
+
 * Connect the microSD card with your PC
 * Execute the PINE64 Installer
 * Click on button "Choose an OS"
@@ -28,6 +32,8 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 * Choose the correct microSD card
 * Click on the button "Flash"
 * Put the flashed microSD card in the ROCK64
+* Connect the USB-RS232-TTL covnverter with the ROCK64
+* Start minicom with the baud rate 1500000
 * Power-On the ROCK64
 
 ### Step 2 - Install OpenBSD
@@ -36,7 +42,8 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 Example Link: ftp://ftp2.eu.openbsd.org/pub/OpenBSD/snapshots/arm64/
 * Open the terminal
 * Type the following (as example - change the command where you have downloaded the file minirooot63.fs and the correct device for the microSD card):
-$ dd if=miniroot63.fs of=/dev/sde
+```$ dd if=miniroot63.fs of=/dev/sde
+```
 * Put the microSD card in the ROCK64
 * Start minicom with the baud rate 115200
 * Power-On the ROCK64
