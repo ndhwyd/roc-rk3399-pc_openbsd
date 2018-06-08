@@ -24,7 +24,10 @@ Link: https://github.com/pine64dev/PINE64-Installer/blob/master/README.md
 Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-boot-flash-spi-rock64.img.xz
 
 * Connect the microSD card with your PC
-* Execute the PINE64 Installer
+* Execute the PINE64 Installer:
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/pine64installer_01.png "PINE64 Installer 1")
+
 * Click on button "Choose an OS"
 * Select "ROCK64" in the drop-down menu
 * Select "Browse image file from local drive"
