@@ -56,7 +56,10 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 
 * After successfully flashing close the PINE64 Installer and remove the microSD card
 * Put the flashed microSD card in the ROCK64
-* Connect the USB-RS232-TTL converter with the ROCK64
+* Connect the USB-RS232-TTL converter with the ROCK64:
+
+![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/rock64.png "ROCK64")
+
 * Start minicom with the baud rate 1500000
 
 ```
