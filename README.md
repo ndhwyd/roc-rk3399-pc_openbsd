@@ -32,7 +32,7 @@ Link: https://github.com/ayufan-rock64/linux-build/releases/download/0.6.51/u-bo
 * Choose the correct microSD card
 * Click on the button "Flash"
 * Put the flashed microSD card in the ROCK64
-* Connect the USB-RS232-TTL covnverter with the ROCK64
+* Connect the USB-RS232-TTL converter with the ROCK64
 * Start minicom with the baud rate 1500000
 * Power-On the ROCK64
 
