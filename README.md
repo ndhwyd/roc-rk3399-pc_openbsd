@@ -77,6 +77,11 @@ $ minicom -8 -D /dev/ttyUSB0 -b 1500000
 
 Link: https://ftp2.eu.openbsd.org/pub/OpenBSD/snapshots/arm64/ (Example link)
 
+**INFO**
+
+You must use the -CURRENT (snapshot) tree. With the release 6.3 of the ARM port of OpenBSD the Gigabit network of the ROCK64 doesn't work. 
+
+
 * Open the terminal
 * Type the following (as example - change the command where you have downloaded the file minirooot63.fs and the correct device for the microSD card):
 
