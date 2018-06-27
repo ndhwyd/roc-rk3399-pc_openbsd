@@ -108,6 +108,65 @@ minicom -8 -D /dev/ttyUSB0 -b 115200
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/openbsd_hello.png "OpenBSD Welcome")
 
+**dmesg output after Install**
+
+```
+$ dmesg
+OpenBSD 6.3-current (GENERIC.MP) #16: Thu Jun  7 13:04:56 MDT 2018
+    deraadt@arm64.openbsd.org:/usr/src/sys/arch/arm64/compile/GENERIC.MP
+real mem  = 4216815616 (4021MB)
+avail mem = 4018982912 (3832MB)
+mainbus0 at root: Pine64 Rock64
+cpu0 at mainbus0 mpidr 0: ARM Cortex-A53 r0p4
+efi0 at mainbus0: UEFI 2.0.5
+efi0: Das U-boot rev 0x0
+psci0 at mainbus0: PSCI 1.0
+syscon0 at mainbus0: "syscon"
+syscon1 at mainbus0: "power-management"
+rkclock0 at mainbus0
+syscon2 at mainbus0: "syscon-usb"
+ampintc0 at mainbus0 nirq 160, ncpu 4 ipi: 0, 1: "interrupt-controller"
+rkpinctrl0 at mainbus0: "pinctrl"
+rkgpio0 at rkpinctrl0
+rkgpio1 at rkpinctrl0
+rkgpio2 at rkpinctrl0
+rkgpio3 at rkpinctrl0
+agtimer0 at mainbus0: tick rate 24000 KHz
+com0 at mainbus0: ns16550, no working fifo
+com0: console
+rkiic0 at mainbus0
+iic0 at rkiic0
+rkpmic0 at iic0 addr 0x18: RK805
+simplebus0 at mainbus0: "amba"
+dwmmc0 at mainbus0: 48 MHz base clock
+sdmmc0 at dwmmc0: 8-bit, mmc high-speed, dma
+dwmmc1 at mainbus0: 48 MHz base clock
+sdmmc1 at dwmmc1: 4-bit, sd high-speed, mmc high-speed, dma
+dwge0 at mainbus0
+dwge0: address: 12:a1:57:33:b4:3a
+rgephy0 at dwge0 phy 0: RTL8169S/8110S/8211 PHY, rev. 6
+ehci0 at mainbus0
+usb0 at ehci0: USB revision 2.0
+uhub0 at usb0 configuration 1 interface 0 "Generic EHCI root hub" rev 2.00/1.00 addr 1
+cpu1 at mainbus0 mpidr 1: ARM Cortex-A53 r0p4
+cpu2 at mainbus0 mpidr 2: ARM Cortex-A53 r0p4
+cpu3 at mainbus0 mpidr 3: ARM Cortex-A53 r0p4
+scsibus0 at sdmmc0: 2 targets, initiator 0
+sd0 at scsibus0 targ 1 lun 0: <SD/MMC, NCard, 0000> SCSI2 0/direct removable
+sd0: 59000MB, 512 bytes/sector, 120832000 sectors
+scsibus1 at sdmmc1: 2 targets, initiator 0
+sd1 at scsibus1 targ 1 lun 0: <SD/MMC, SC32G, 0080> SCSI2 0/direct removable
+sd1: 30436MB, 512 bytes/sector, 62333952 sectors
+vscsi0 at root
+scsibus2 at vscsi0: 256 targets
+softraid0 at root
+scsibus3 at softraid0: 256 targets
+bootfile: sd0a:/bsd
+boot device: sd0
+root on sd1a (230f9d20b25da824.a) swap on sd1b dump on sd1b
+$
+```
+
 ##### Credits:
 
 Thanks to Mark Kettenis from the OpenBSD ARM mailing-list.
