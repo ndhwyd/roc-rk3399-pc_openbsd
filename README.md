@@ -15,7 +15,7 @@ Link: https://github.com/pine64dev/PINE64-Installer/blob/master/README.md
 * ayufun's U-Boot SPI Flasher
 * Terminal (like minicom)
 
-### Step 1 - Flash U-Boot in SPI-EEPROM from the ROCK64
+### Step 1 - Flash U-Boot in SPI-EEPROM on the ROCK64
 
 * Download the current PINE64 Installer
 * Extract the PINE64 Installer
@@ -71,8 +71,12 @@ $ minicom -8 -D /dev/ttyUSB0 -b 1500000
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/flash.png "Flash")
 
+* Power-Down the ROCK64
+* Remove the MicroSD from ROCK64
+
 ### Step 2 - Install OpenBSD
 
+* Connect the microSD card with your PC
 * Download the file "miniroot63.fs" form the OpenBSD's mirrors
 
 Link: https://ftp2.eu.openbsd.org/pub/OpenBSD/snapshots/arm64/ (Example link)
@@ -89,6 +93,7 @@ You must use the -CURRENT (snapshot) tree. With the release 6.3 of the ARM port 
 $ dd if=miniroot63.fs of=/dev/sde
 ```
 
+* Remove the microSD card from PC
 * Put the microSD card in the ROCK64
 * Start minicom with the baud rate 115200
 
@@ -108,7 +113,7 @@ minicom -8 -D /dev/ttyUSB0 -b 115200
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/raw/master/images/openbsd_hello.png "OpenBSD Welcome")
 
-**dmesg output after Install**
+**dmesg output after install:**
 
 ```
 $ dmesg
