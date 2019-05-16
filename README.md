@@ -70,7 +70,7 @@ minicom -8 -D /dev/ttyUSB0 -b 115200
 
 ### Step 3 - Have fun with OpenBSD on the ROCK64!
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/openbsd_welcome.png")
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/openbsd_welcome.png)
 
 **dmesg output after install:**
 
