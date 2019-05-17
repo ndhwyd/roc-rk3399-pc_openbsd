@@ -176,6 +176,10 @@ cpu0: clock not implemented
 $
 ```
 
+##### Limitations
+
+* HDMI output currently not working
+
 ##### Credits:
 
-Thanks to Ayufan and Mark Kettenis.
+Thanks to Ayufan, Mark Kettenis and all people of the OpenBSD project .
