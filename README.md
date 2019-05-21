@@ -2,8 +2,8 @@
 
 **Required hardware**
 
-* PC with Linux or OpenBSD intalled
-* ROCK64 media board
+* PC with Linux or OpenBSD installed
+* PINE64 ROCK64 media board
 * USB-UART-TTL converter (**Attention:** Use 3.3V only)
 * microSD card
 
@@ -37,7 +37,7 @@ $ dd if=u-boot-flash-spi-rock64.img of=/dev/sdx bs=1M
 $ minicom -D /dev/ttyUSB0 -b 1500000 -8
 ```
 * Power-On ROCK64
-* Wait until you see in the last line "SF: 4096000 bytes @ 0x8000 Written: OK"
+* Wait until you see in the last line "SF: 4096000 bytes @ 0x8000 **Written: OK**"
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/spi_flash.png)
 
