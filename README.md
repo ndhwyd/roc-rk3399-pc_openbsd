@@ -12,7 +12,7 @@
 * UART Terminal (in this tutorial I use minicom)
 
 There are two options to install OpenBSD on the board. The first option (offical) is to build U-Boot from
-the offical Github respority. The second option is to use Ayufan's SPI flash tool.
+the offical Github respority or the second option is to use Ayufan's SPI flash tool.
 
 ## Option 1
 
@@ -21,7 +21,7 @@ the offical Github respority. The second option is to use Ayufan's SPI flash too
 * GCC cross compiler for ARM64 (aarch64)
 * Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors
 
-[Download (Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
+[Download (Mirror Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
 
 ### Step 1 - Build ATF
 
@@ -105,11 +105,11 @@ $ dd if=/path/to/miniroot67.fs of=/dev/sdx bs=1M
 
 * Place *idbloader.img* on microSD card
 ```
-$ dd if=/path/to/idbloader.img of=/dev/sdf seek=64
+$ dd if=/path/to/idbloader.img of=/dev/sdf bs=512 seek=64 conv=sync
 ```
 * Place *u-boot.idb* on microSD card
 ```
-$ dd if=/path/to/u-boot.itb of=/dev/sdf seek=16384
+$ dd if=/path/to/u-boot.itb of=/dev/sdf bs=512 seek=16384 conv=sync
 ```
 * Remove microSD card from PC
 
@@ -123,7 +123,7 @@ minicom -8 -D /dev/ttyUSB0 -b 1500000
 * Power-On the ROCK64
 * Wait until you see the OpenBSD Installer:
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/openbsd_installer.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd-installer.png)
 
 * Install OpenBSD: Follow the steps of the OpenBSD installer
 * After successfull installation reboot OpenBSD
@@ -162,30 +162,16 @@ $ minicom -D /dev/ttyUSB0 -b 1500000 -8
 * Power-On ROCK64
 * Wait until you see in the last line "SF: 4096000 bytes @ 0x8000 **Written: OK**"
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/spi_flash.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-spi-flash.png)
 
 * Power-Down ROCK64
 * Remove the MicroSD from ROCK64
-
-### Option 2 - Build your own U-Boot from the offical sources
-
-* Get the U-Boot sources
-
-* Get the an ARM cross compiler
-
-
-* Connect the microSD card with your PC
-* Open the terminal on your PC
-* Change the path to U-Boot sources
-```
-$ cd path/to/u-boot
-```
 
 ### Step 2 - Install OpenBSD
 
 * Connect the microSD card with your PC
 * Open the terminal on your PC
-* Copy miniroot65.fs to microSD
+* Copy miniroot67.fs to microSD
 
 ```
 $ dd if=miniroot65.fs of=/dev/sdx bs=1M
@@ -200,89 +186,95 @@ minicom -8 -D /dev/ttyUSB0 -b 115200
 * Power-On the ROCK64
 * Wait until you see the OpenBSD Installer:
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/openbsd_installer.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd-installer.png)
 
 * Install OpenBSD: Follow the steps of the OpenBSD installer
 * After successfull installation reboot OpenBSD
 
 ### Step 3 - Have fun with OpenBSD on the ROCK64!
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/openbsd_welcome.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd-welcome.png)
 
 **dmesg output after install:**
 
 ```
 $ dmesg
-OpenBSD 6.5 (GENERIC.MP) #84: Wed Apr 17 05:53:43 MDT 2019
+  
+OpenBSD 6.7 (GENERIC.MP) #602: Thu May  7 13:45:48 MDT 2020
     deraadt@arm64.openbsd.org:/usr/src/sys/arch/arm64/compile/GENERIC.MP
-real mem  = 4213956608 (4018MB)
-avail mem = 4051111936 (3863MB)
+real mem  = 4211326976 (4016MB)
+avail mem = 4007395328 (3821MB)
 mainbus0 at root: Pine64 Rock64
 cpu0 at mainbus0 mpidr 0: ARM Cortex-A53 r0p4
 cpu0: 32KB 64b/line 2-way L1 VIPT I-cache, 32KB 64b/line 4-way L1 D-cache
-cpu0: 256KB 64b/line 16-way L2 cache
-efi0 at mainbus0: UEFI 2.0.5
-efi0: Das U-boot rev 0x0
+cpu0: 256KB 64b/line 16-way L2 cache 
+efi0 at mainbus0: UEFI 2.8
+efi0: Das U-Boot rev 0x20200700
 apm0 at mainbus0
-psci0 at mainbus0: PSCI 1.0
+psci0 at mainbus0: PSCI 1.1, SMCCC 1.2
 syscon0 at mainbus0: "syscon"
-syscon1 at mainbus0: "power-management"
+"io-domains" at syscon0 not configured
+"grf-gpio" at syscon0 not configured
+"power-controller" at syscon0 not configured
+"reboot-mode" at syscon0 not configured
 rkclock0 at mainbus0
-rkclock_set_parent: 0x000000b4
-rkclock_set_frequency: 0x000000c4
-rkclock_set_frequency: 0x000000c5
-rkclock_set_frequency: 0x000000ca
-rkclock_set_frequency: 0x000000c1
-rkclock_set_frequency: 0x000000bf
-rkclock_set_frequency: 0x000000c6
-rkclock_set_frequency: 0x000000c8
-rkclock_set_frequency: 0x000000c9
-rkclock_set_frequency: 0x000000c4
-rkclock_set_frequency: 0x000001ac
-rkclock_set_frequency: 0x0000013c
-rkclock_set_frequency: 0x000000c5
-rkclock_set_frequency: 0x00000198
-rkclock_set_frequency: 0x0000014a
-rkclock_set_frequency: 0x000000ca
-rkclock_set_frequency: 0x000001a9
-rkclock_set_frequency: 0x000000c1
-rkclock_set_frequency: 0x00000045
-rkclock_set_frequency: 0x000000bf
-rkclock_set_frequency: 0x000000c6
-rkclock_set_frequency: 0x000000c8
-rkclock_set_frequency: 0x000000c9
-rkclock_set_frequency: 0x0000003e
-rkclock_set_frequency: 0x00000149
-rkclock_set_frequency: 0x000000ce
-rkclock_set_frequency: 0x00000140
-rkclock_set_frequency: 0x00000061
-syscon2 at mainbus0: "syscon-usb"
-"usb2-phy" at syscon2 not configured
+syscon1 at mainbus0: "syscon"
+"usb2-phy" at syscon1 not configured
 ampintc0 at mainbus0 nirq 160, ncpu 4 ipi: 0, 1: "interrupt-controller"
 rkpinctrl0 at mainbus0: "pinctrl"
 rkgpio0 at rkpinctrl0
 rkgpio1 at rkpinctrl0
 rkgpio2 at rkpinctrl0
 rkgpio3 at rkpinctrl0
+"opp_table0" at mainbus0 not configured
+simplebus0 at mainbus0: "bus"
+"dmac" at simplebus0 not configured
+"arm-pmu" at mainbus0 not configured
+rkdrm0 at mainbus0
+drm0 at rkdrm0
 agtimer0 at mainbus0: tick rate 24000 KHz
+"xin24m" at mainbus0 not configured
+"i2s" at mainbus0 not configured
+"spdif" at mainbus0 not configured
 com0 at mainbus0: ns16550, no working fifo
 com0: console
 rkiic0 at mainbus0
 iic0 at rkiic0
 rkpmic0 at iic0 addr 0x18: RK805
-simplebus0 at mainbus0: "amba"
-"dmac" at simplebus0 not configured
-dwmmc0 at mainbus0: 50 MHz base clock
-sdmmc0 at dwmmc0: 8-bit, mmc high-speed, dma
-dwmmc1 at mainbus0: 50 MHz base clock
-sdmmc1 at dwmmc1: 4-bit, sd high-speed, mmc high-speed, dma
-dwge0 at mainbus0
-dwge0: address: 12:a1:57:33:b4:3a
+"spi" at mainbus0 not configured
+"watchdog" at mainbus0 not configured
+rktemp0 at mainbus0
+"efuse" at mainbus0 not configured
+"gpu" at mainbus0 not configured
+"video-codec" at mainbus0 not configured
+"iommu" at mainbus0 not configured
+"vop" at mainbus0 not configured
+"iommu" at mainbus0 not configured
+"hdmi" at mainbus0 not configured
+"codec" at mainbus0 not configured
+"phy" at mainbus0 not configured
+dwmmc0 at mainbus0: 50 MHz base clock   
+sdmmc0 at dwmmc0: 4-bit, sd high-speed, mmc high-speed, dma  
+dwmmc1 at mainbus0: 50 MHz base clock   
+sdmmc1 at dwmmc1: 8-bit, mmc high-speed, dma   
+dwge0 at mainbus0: address 0e:ef:78:b6:3b:f6   
 rgephy0 at dwge0 phy 0: RTL8169S/8110S/8211 PHY, rev. 6
-ehci0 at mainbus0
-usb0 at ehci0: USB revision 2.0
+ehci0 at mainbus0   
+usb0 at ehci0: USB revision 2.0   
 uhub0 at usb0 configuration 1 interface 0 "Generic EHCI root hub" rev 2.00/1.00 addr 1
 ohci0 at mainbus0: version 1.0
+"usb" at mainbus0 not configured
+"external-gmac-clock" at mainbus0 not configured
+"sdmmc-regulator" at mainbus0 not configured
+"vcc-host-5v-regulator" at mainbus0 not configured
+"vcc-host1-5v-regulator" at mainbus0 not configured
+"vcc-sys" at mainbus0 not configured
+"ir-receiver" at mainbus0 not configured
+"leds" at mainbus0 not configured
+"sound" at mainbus0 not configured
+"spdif-dit" at mainbus0 not configured
+"dmc" at mainbus0 not configured
+"usb" at mainbus0 not configured
 cpu1 at mainbus0 mpidr 1: ARM Cortex-A53 r0p4
 cpu1: 32KB 64b/line 2-way L1 VIPT I-cache, 32KB 64b/line 4-way L1 D-cache
 cpu1: 256KB 64b/line 16-way L2 cache
@@ -294,22 +286,20 @@ cpu3: 32KB 64b/line 2-way L1 VIPT I-cache, 32KB 64b/line 4-way L1 D-cache
 cpu3: 256KB 64b/line 16-way L2 cache
 usb1 at ohci0: USB revision 1.0
 uhub1 at usb1 configuration 1 interface 0 "Generic OHCI root hub" rev 1.00/1.00 addr 1
-scsibus0 at sdmmc1: 2 targets, initiator 0
-sd0 at scsibus0 targ 1 lun 0: <SD/MMC, SC32G, 0080> SCSI2 0/direct removable
+scsibus0 at sdmmc0: 2 targets, initiator 0
+sd0 at scsibus0 targ 1 lun 0: <SD/MMC, SC32G, 0080> removable
 sd0: 30436MB, 512 bytes/sector, 62333952 sectors
-scsibus1 at sdmmc0: 2 targets, initiator 0
-sd1 at scsibus1 targ 1 lun 0: <SD/MMC, NCard, 0000> SCSI2 0/direct removable
-sd1: 59000MB, 512 bytes/sector, 120832000 sectors
+sdmmc1: can't enable card
 vscsi0 at root
-scsibus2 at vscsi0: 256 targets
+scsibus1 at vscsi0: 256 targets
 softraid0 at root
-scsibus3 at softraid0: 256 targets
+scsibus2 at softraid0: 256 targets
 bootfile: sd0a:/bsd
 boot device: sd0
-root on sd1a (27151c8abf92b0dd.a) swap on sd1b dump on sd1b
-WARNING: preposterous time in file system
+root on sd0a (4f8a06bfda438700.a) swap on sd0b dump on sd0b
+WARNING: bad clock chip time
 WARNING: CHECK AND RESET THE DATE!
-cpu0: clock not implemented
+rkdrm0: no display interface ports configured
 $
 ```
 
@@ -319,4 +309,4 @@ $
 
 ##### Credits:
 
-Thanks to Ayufan, Mark Kettenis and all people of the OpenBSD project .
+Thanks to all peaople from U-Boot and the OpenBSD project.
