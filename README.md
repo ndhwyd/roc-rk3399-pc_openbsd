@@ -113,10 +113,29 @@ $ dd if=/path/to/u-boot.itb of=/dev/sdx bs=512 seek=16384 conv=sync
 ```
 * Remove microSD card from PC
 
-### Step 5 - Install OpenBSD
+### Step 5 - Place *rk3328-rock64.dtb on microSD card
+
+* Mount the FAT partition
+``
+$ mount -t vfat /dev/sdx1 /mnt
+``  
+* Create a directory with the name rockchip  
+``
+$ cd /mnt
+``  
+``
+$ mkdir rockchip
+``  
+* Place the dtb file in this directory  
+``
+$ cp path/to/u-boot/arch/arm/dts/rk3328-rock64.dtb ./rockchip
+``  
+* Umnmount the microSD card and remove the card
+
+### Step 6 - Install OpenBSD
 
 * Put microSD card in the ROCK64
-* Start minicom with the baud rate 115200
+* Start minicom with the baud rate 1500000
 ```
 minicom -8 -D /dev/ttyUSB0 -b 1500000
 ```
@@ -128,7 +147,7 @@ minicom -8 -D /dev/ttyUSB0 -b 1500000
 * Install OpenBSD: Follow the steps of the OpenBSD installer
 * After successfull installation reboot OpenBSD
 
-### Step 6 - Have fun with OpenBSD 6.7 on ROCK64!
+### Step 7 - Have fun with OpenBSD 6.7 on ROCK64!
 
 ## Option 2
 
@@ -312,7 +331,7 @@ $
 
 * Remove MicroSD and eMMC (if any) from ROCK64
 * Power-On the ROCK64
-* After U-Boot booting, type the following in the U-Boot command line
+* After U-Boot booting, type the following in the U-Boot command line  
 ``
 sf probe
 ``  
