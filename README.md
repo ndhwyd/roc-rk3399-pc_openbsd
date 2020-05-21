@@ -123,7 +123,7 @@ minicom -8 -D /dev/ttyUSB0 -b 1500000
 * Power-On the ROCK64
 * Wait until you see the OpenBSD Installer:
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd-installer.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd_installer.png)
 
 * Install OpenBSD: Follow the steps of the OpenBSD installer
 * After successfull installation reboot OpenBSD
@@ -135,10 +135,10 @@ minicom -8 -D /dev/ttyUSB0 -b 1500000
 **Required software**
 
 * GCC cross compiler for ARM64 (aarch64)
-* Ayufan's SPI Flash image
+* Ayufan's SPI Flash image  
 [Download (latest release)](https://github.com/ayufan-rock64/linux-u-boot/releases/download/2017.09-rockchip-ayufan-1045-g9922d32c04/u-boot-flash-spi-rock64.img.xz)
-* Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors
-[Download (Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
+* Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors  
+[Download (Mirror Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
 
 ### Step 1 - Flash U-Boot in the SPI-EEPROM on the ROCK64 board  
 
@@ -186,14 +186,14 @@ minicom -8 -D /dev/ttyUSB0 -b 115200
 * Power-On the ROCK64
 * Wait until you see the OpenBSD Installer:
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd-installer.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd_installer.png)
 
 * Install OpenBSD: Follow the steps of the OpenBSD installer
 * After successfull installation reboot OpenBSD
 
 ### Step 3 - Have fun with OpenBSD on the ROCK64!
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd-welcome.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd_welcome.png)
 
 **dmesg output after install:**
 
