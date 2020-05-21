@@ -1,23 +1,124 @@
-# TUTORIAL: Install OpenBSD 6.5 on a PINE64 ROCK64 media board 
+# TUTORIAL: Install OpenBSD 6.7 on a PINE64 ROCK64 media board 
 
 **Required hardware**
 
 * PC with Linux or OpenBSD installed
-* PINE64 ROCK64 media board
+* PINE64 ROCK64 media board (In this tutorial I use version 2.0 of the board)
 * USB-UART-TTL converter (**Attention:** Use 3.3V only)
 * microSD card
 
-**Required software images**
+**Generic required software**
 
 * UART Terminal (in this tutorial I use minicom)
-* Ayufan's U-Boot SPI Flash image
 
+There are two option to install OpenBSD on the board. The first option (offical) is to build U-Boot from
+the offical Github respority. The second option is to use Ayufan's SPI flash tool.
+
+## Option 1
+
+**Required software**
+
+* GCC cross compiler for ARM64 (aarch64)
+* Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors
+
+[Download (Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
+
+### Step 1 - Build ATF
+
+
+*Note*
+In this tutorial I usesd the offical GCC compiler from the ARM website.
+
+* Checkout ATF (ARM Trusted Firmware) sources:
+``
+$ mkdir atf
+$ cd atf
+$ git init
+$ git remote add origin https://github.com/ARM-software/arm-trusted-firmware.git
+$ git pull
+$ git checkout master
+``
+* Build ATF (BL31)
+``
+$ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
+``
+* Export ATF for U-Boot
+``
+$ BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf
+``
+
+*NOTE*
+The previous steps (build ATF) are required to sccessfully boot OpenBSD. Without these steps, U-Boot
+will boot but cannot load OpenBSD.
+
+### Step 2 - Build U-Boot
+
+
+* Checkout U-Boot sources:
+``
+$ mkdir u-boot
+$ cd u-boot
+$ git init
+$ git remote add origin https://github.com/u-boot/u-boot.git
+$ git pull
+$ git checkout master
+``
+* Build U-Boot
+``
+$ make rock64-rk3328_defconfig
+$ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf-
+``
+
+### Step 3 - Install *miniroot67.fs* on microSD card
+
+* Connect the microSD card with your PC
+* Open the terminal on your PC
+* Copy *miniroot67.fs* to microSD
+
+```
+$ dd if=/path/to/miniroot67.fs of=/dev/sdx bs=1M
+```
+
+### Step 4 - Place *idbloader.img* and *u-boot.idb* on microSD card
+
+* Place *idbloader.img* on microSD card
+```
+$ dd if=/path/to/idbloader.img of=/dev/sdf seek=64
+```
+* Place *u-boot.idb* on microSD card
+```
+$ dd if=/path/to/u-boot.itb of=/dev/sdf seek=16384
+```
+* Remove microSD card from PC
+
+### Step 5 - Install OpenBSD
+
+* Put microSD card in the ROCK64
+* Start minicom with the baud rate 115200
+```
+minicom -8 -D /dev/ttyUSB0 -b 1500000
+```
+* Power-On the ROCK64
+* Wait until you see the OpenBSD Installer:
+
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/openbsd_installer.png)
+
+* Install OpenBSD: Follow the steps of the OpenBSD installer
+* After successfull installation reboot OpenBSD
+
+### Step 6 - Have fun with OpenBSD 6.7 on ROCK64!
+
+## Option 2
+
+**Required software**
+
+* GCC cross compiler for ARM64 (aarch64)
+* Ayufan's SPI Flash image
 [Download (latest release)](https://github.com/ayufan-rock64/linux-u-boot/releases/download/2017.09-rockchip-ayufan-1045-g9922d32c04/u-boot-flash-spi-rock64.img.xz)
-* miniroot65.fs image for ARM64
+* Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors
+[Download (Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
 
-[Download](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.5/arm64/miniroot65.fs)
-
-### Step 1 - Flash U-Boot in the SPI-EEPROM on the ROCK64 board 
+### Step 1 - Flash U-Boot in the SPI-EEPROM on the ROCK64 board  
 
 * Connect microSD card with your PC
 * Open a terminal on your PC
@@ -43,6 +144,20 @@ $ minicom -D /dev/ttyUSB0 -b 1500000 -8
 
 * Power-Down ROCK64
 * Remove the MicroSD from ROCK64
+
+### Option 2 - Build your own U-Boot from the offical sources
+
+* Get the U-Boot sources
+
+* Get the an ARM cross compiler
+
+
+* Connect the microSD card with your PC
+* Open the terminal on your PC
+* Change the path to U-Boot sources
+```
+$ cd path/to/u-boot
+```
 
 ### Step 2 - Install OpenBSD
 
