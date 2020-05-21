@@ -35,17 +35,17 @@ $ mkdir atf
 ``  
 ``
 $ cd atf
-``
 ``  
+``
 $ git init
 ``  
 ``
 $ git remote add origin https://github.com/ARM-software/arm-trusted-firmware.git
-``
 ``  
+``
 $ git pull
-``
 ``  
+``
 $ git checkout master
 ``  
 * Build ATF (BL31)  
@@ -54,7 +54,7 @@ $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
 ``
 * Export ATF for U-Boot  
 ``
-$ BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf  
+$ BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf
 ``
 
 *NOTE*  
@@ -84,8 +84,7 @@ $ git pull
 $ git checkout master
 ``  
 ``
-* Build U-Boot
-``  
+* Build U-Boot  
 ``
 $ make rock64-rk3328_defconfig
 ``  
