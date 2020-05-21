@@ -2,7 +2,7 @@
 
 **Required hardware**
 
-* PC with Linux or OpenBSD installed
+* PC with Linux (in this tutorial) or OpenBSD installed
 * PINE64 ROCK64 media board (In this tutorial I use version 2.0 of the board)
 * USB-UART-TTL converter (**Attention:** Use 3.3V only)
 * microSD card
@@ -58,7 +58,7 @@ $ BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf
 ``
 
 *NOTE*  
-The previous steps (build ATF) are required to sccessfully boot OpenBSD. Without these steps, U-Boot
+The previous steps (build ATF) are required to successfully boot OpenBSD. Without these steps, U-Boot
 will boot but cannot load OpenBSD.
 
 ### Step 2 - Build U-Boot
@@ -302,10 +302,24 @@ rkdrm0: no display interface ports configured
 $
 ```
 
-##### Limitations
+## Limitations
 
 * HDMI output currently not working
 
-##### Credits:
+## Additional
+
+### Remove Ayufan's U-Boot from SPI flash
+
+* Remove MicroSD and eMMC (if any) from ROCK64
+* Power-On the ROCK64
+* After U-Boot booting, type the following in the U-Boot command line
+``
+sf probe
+``  
+``
+sf erase 0 400000
+``
+
+## Credits:
 
 Thanks to all peaople from U-Boot and the OpenBSD project.
