@@ -26,7 +26,7 @@ the offical Github respority or the second option is to use Ayufan's SPI flash t
 ### Step 1 - Build ATF
 
 
-*Note*
+*Note*  
 In this tutorial I usesd the offical GCC compiler from the ARM website.
 
 * Checkout ATF (ARM Trusted Firmware) sources  
@@ -91,6 +91,12 @@ $ make rock64-rk3328_defconfig
 $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf-
 ``
 
+*NOTE*  
+Alternatively you can use my prebuilt binaries:
+
+[Rock64](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rock64)  
+[RockPro64 (not tested)](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rockpro64)  
+
 ### Step 3 - Install *miniroot67.fs* on microSD card
 
 * Connect the microSD card with your PC
@@ -111,7 +117,6 @@ $ dd if=/path/to/idbloader.img of=/dev/sdx bs=512 seek=64 conv=sync
 ```
 $ dd if=/path/to/u-boot.itb of=/dev/sdx bs=512 seek=16384 conv=sync
 ```
-* Remove microSD card from PC
 
 ### Step 5 - Place *rk3328-rock64.dtb* on microSD card
 
