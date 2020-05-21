@@ -83,7 +83,6 @@ $ git pull
 ``
 $ git checkout master
 ``  
-``
 * Build U-Boot  
 ``
 $ make rock64-rk3328_defconfig
