@@ -105,11 +105,11 @@ $ dd if=/path/to/miniroot67.fs of=/dev/sdx bs=1M
 
 * Place *idbloader.img* on microSD card
 ```
-$ dd if=/path/to/idbloader.img of=/dev/sdf bs=512 seek=64 conv=sync
+$ dd if=/path/to/idbloader.img of=/dev/sdx bs=512 seek=64 conv=sync
 ```
 * Place *u-boot.idb* on microSD card
 ```
-$ dd if=/path/to/u-boot.itb of=/dev/sdf bs=512 seek=16384 conv=sync
+$ dd if=/path/to/u-boot.itb of=/dev/sdx bs=512 seek=16384 conv=sync
 ```
 * Remove microSD card from PC
 
@@ -134,7 +134,6 @@ minicom -8 -D /dev/ttyUSB0 -b 1500000
 
 **Required software**
 
-* GCC cross compiler for ARM64 (aarch64)
 * Ayufan's SPI Flash image  
 [Download (latest release)](https://github.com/ayufan-rock64/linux-u-boot/releases/download/2017.09-rockchip-ayufan-1045-g9922d32c04/u-boot-flash-spi-rock64.img.xz)
 * Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors  
@@ -174,7 +173,7 @@ $ minicom -D /dev/ttyUSB0 -b 1500000 -8
 * Copy miniroot67.fs to microSD
 
 ```
-$ dd if=miniroot65.fs of=/dev/sdx bs=1M
+$ dd if=miniroot67.fs of=/dev/sdx bs=1M
 ```
 
 * Remove microSD card from PC
@@ -191,7 +190,7 @@ minicom -8 -D /dev/ttyUSB0 -b 115200
 * Install OpenBSD: Follow the steps of the OpenBSD installer
 * After successfull installation reboot OpenBSD
 
-### Step 3 - Have fun with OpenBSD on the ROCK64!
+### Step 3 - Have fun with OpenBSD 6.7 on ROCK64!
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd_welcome.png)
 
