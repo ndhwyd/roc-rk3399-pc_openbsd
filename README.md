@@ -29,26 +29,26 @@ the offical Github respority. The second option is to use Ayufan's SPI flash too
 *Note*
 In this tutorial I usesd the offical GCC compiler from the ARM website.
 
-* Checkout ATF (ARM Trusted Firmware) sources
+* Checkout ATF (ARM Trusted Firmware) sources  
 ``
 $ mkdir atf
-``
+``  
 ``
 $ cd atf
 ``
-``
+``  
 $ git init
-``
+``  
 ``
 $ git remote add origin https://github.com/ARM-software/arm-trusted-firmware.git
 ``
-``
+``  
 $ git pull
 ``
-``
+``  
 $ git checkout master
-``
-* Build ATF (BL31)
+``  
+* Build ATF (BL31)  
 ``
 $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
 ``
@@ -57,38 +57,38 @@ $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
 $ BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf  
 ``
 
-*NOTE*
+*NOTE*  
 The previous steps (build ATF) are required to sccessfully boot OpenBSD. Without these steps, U-Boot
 will boot but cannot load OpenBSD.
 
 ### Step 2 - Build U-Boot
 
 
-* Checkout U-Boot sources
+* Checkout U-Boot sources  
 ``
 $ mkdir u-boot
-``
+``  
 ``
 $ cd u-boot
-``
+``  
 ``
 $ git init
-``
+``  
 ``
 $ git remote add origin https://github.com/u-boot/u-boot.git
-``
+``  
 ``
 $ git pull
+``  
 ``
-``
-$ git checkout master  
-``
+$ git checkout master
+``  
 ``
 * Build U-Boot
-``
+``  
 ``
 $ make rock64-rk3328_defconfig
-``
+``  
 ``
 $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf-
 ``
