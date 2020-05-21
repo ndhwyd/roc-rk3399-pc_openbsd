@@ -31,12 +31,12 @@ In this tutorial I usesd the offical GCC compiler from the ARM website.
 
 * Checkout ATF (ARM Trusted Firmware) sources:  
 ``
-$ mkdir atf
-$ cd atf
-$ git init
-$ git remote add origin https://github.com/ARM-software/arm-trusted-firmware.git
-$ git pull
-$ git checkout master
+$ mkdir atf  
+$ cd atf  
+$ git init  
+$ git remote add origin https://github.com/ARM-software/arm-trusted-firmware.git  
+$ git pull  
+$ git checkout master  
 ``
 * Build ATF (BL31)  
 ``
@@ -44,7 +44,7 @@ $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
 ``
 * Export ATF for U-Boot  
 ``
-$ BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf
+$ BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf  
 ``
 
 *NOTE*
@@ -56,17 +56,17 @@ will boot but cannot load OpenBSD.
 
 * Checkout U-Boot sources:  
 ``
-$ mkdir u-boot
-$ cd u-boot
-$ git init
-$ git remote add origin https://github.com/u-boot/u-boot.git
-$ git pull
-$ git checkout master
+$ mkdir u-boot  
+$ cd u-boot  
+$ git init  
+$ git remote add origin https://github.com/u-boot/u-boot.git  
+$ git pull  
+$ git checkout master  
 ``
 * Build U-Boot  
 ``
-$ make rock64-rk3328_defconfig
-$ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf-
+$ make rock64-rk3328_defconfig  
+$ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf-  
 ``
 
 ### Step 3 - Install *miniroot67.fs* on microSD card
