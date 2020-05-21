@@ -113,9 +113,9 @@ $ dd if=/path/to/u-boot.itb of=/dev/sdx bs=512 seek=16384 conv=sync
 ```
 * Remove microSD card from PC
 
-### Step 5 - Place *rk3328-rock64.dtb on microSD card
+### Step 5 - Place *rk3328-rock64.dtb* on microSD card
 
-* Mount the FAT partition
+* Mount the FAT partition  
 ``
 $ mount -t vfat /dev/sdx1 /mnt
 ``  
@@ -341,4 +341,4 @@ sf erase 0 400000
 
 ## Credits:
 
-Thanks to all peaople from U-Boot and the OpenBSD project.
+Thanks to all people from U-Boot and the OpenBSD project.
