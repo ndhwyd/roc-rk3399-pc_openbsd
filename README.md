@@ -26,7 +26,7 @@ the offical Github respority or the second option is to use Ayufan's SPI flash t
 ### Step 1 - Build ATF
 
 
-*Note*  
+*NOTE*  
 In this tutorial I usesd the offical GCC compiler from the ARM website.
 
 * Checkout ATF (ARM Trusted Firmware) sources  
@@ -96,6 +96,8 @@ Alternatively you can use my prebuilt binaries:
 
 [Rock64](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rock64)  
 [RockPro64 (not tested)](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rockpro64)  
+
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-u-boot.png)
 
 ### Step 3 - Install *miniroot67.fs* on microSD card
 
