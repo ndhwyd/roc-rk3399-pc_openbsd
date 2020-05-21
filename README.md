@@ -130,7 +130,7 @@ $ mkdir rockchip
 ``
 $ cp path/to/u-boot/arch/arm/dts/rk3328-rock64.dtb ./rockchip
 ``  
-* Umnmount the microSD card and remove the card
+* Unmount the microSD card and remove the card
 
 ### Step 6 - Install OpenBSD
 
