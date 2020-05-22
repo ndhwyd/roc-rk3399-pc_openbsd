@@ -23,35 +23,26 @@ the offical Github respority or the second option is to use Ayufan's SPI flash t
 
 [Download (Mirror Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
 
-### Step 1 - Build ATF
+### Step 1 - Build ATF (ARM Trusted Firmware)
 
 
 *NOTE*  
 In this tutorial I usesd the offical GCC compiler from the ARM website.
 
-* Checkout ATF (ARM Trusted Firmware) sources  
+* Checkout ATF sources  
 ``
-$ mkdir atf
+$ git clone https://github.com/ARM-software/arm-trusted-firmware.git
 ``  
 ``
-$ cd atf
-``  
-``
-$ git init
-``  
-``
-$ git remote add origin https://github.com/ARM-software/arm-trusted-firmware.git
-``  
-``
-$ git pull
-``  
-``
-$ git checkout master
+$ cd arm-trusted-firmware
 ``  
 * Build ATF (BL31)  
 ``
-$ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
+$ make distclean
+``  
 ``
+$ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
+``  
 * Export ATF for U-Boot  
 ``
 $ export BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf
@@ -66,24 +57,15 @@ will boot but cannot load OpenBSD.
 
 * Checkout U-Boot sources  
 ``
-$ mkdir u-boot
+$ git clone https://github.com/u-boot/u-boot.git
 ``  
 ``
 $ cd u-boot
 ``  
-``
-$ git init
-``  
-``
-$ git remote add origin https://github.com/u-boot/u-boot.git
-``  
-``
-$ git pull
-``  
-``
-$ git checkout master
-``  
 * Build U-Boot  
+``
+$ make mrproper
+``  
 ``
 $ make rock64-rk3328_defconfig
 ``  
