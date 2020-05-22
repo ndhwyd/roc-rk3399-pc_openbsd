@@ -220,11 +220,10 @@ minicom -8 -D /dev/ttyUSB0 -b 115200
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd_welcome.png)
 
-**dmesg output after install:**
+## Output (dmesg)
 
 ```
 $ dmesg
-  
 OpenBSD 6.7 (GENERIC.MP) #602: Thu May  7 13:45:48 MDT 2020
     deraadt@arm64.openbsd.org:/usr/src/sys/arch/arm64/compile/GENERIC.MP
 real mem  = 4211326976 (4016MB)
