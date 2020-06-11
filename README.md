@@ -45,7 +45,7 @@ $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf- PLAT=rk3328
 ``  
 * Export ATF for U-Boot  
 ``
-$ export BL31=/path/to/atf/build/rk3328/release/bl31/bl31.elf
+$ export BL31=/path/to/arm-trusted-firmware/build/rk3328/release/bl31/bl31.elf
 ``
 
 *NOTE*  
