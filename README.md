@@ -91,13 +91,13 @@ Alternatively you can use my prebuilt binaries:
 $ dd if=/path/to/miniroot67.fs of=/dev/sdx bs=1M
 ```
 
-### Step 4 - Place *idbloader.img* and *u-boot.idb* on microSD card
+### Step 4 - Place *idbloader.img* and *u-boot.itb* on microSD card
 
 * Place *idbloader.img* on microSD card
 ```
 $ dd if=/path/to/idbloader.img of=/dev/sdx bs=512 seek=64 conv=sync
 ```
-* Place *u-boot.idb* on microSD card
+* Place *u-boot.itb* on microSD card
 ```
 $ dd if=/path/to/u-boot.itb of=/dev/sdx bs=512 seek=16384 conv=sync
 ```
