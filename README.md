@@ -10,17 +10,9 @@
 
 * microSD card
 
-**Generic required software**
-
-* UART Terminal (in this tutorial I use minicom)
-
-There are two options to install OpenBSD on the board. The first option (offical) is to build U-Boot from
-the offical Github respority or the second option is to use Ayufan's SPI flash tool.
-
-## Option 1
-
 **Required software**
 
+* UART Terminal (in this tutorial I use minicom)
 * GCC cross compiler for ARM64 (aarch64)
 * Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors
 
@@ -77,12 +69,12 @@ $ make CROSS_COMPILE=/path/to/gcc/bin/aarch64-none-elf-
 ``
 
 *NOTE*  
-Alternatively you can use my prebuilt binaries:
+Alternatively you can use my prebuilt binaries (U-Boot v2020.07):
 
-[Rock64](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rock64)  
-[RockPro64 (not tested)](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rockpro64)  
+[Rock64](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rock64/v2020.07)  
+[RockPro64 (not tested)](https://github.com/krjdev/rock64_openbsd/blob/master/bin/rockpro64/v2020.07)  
 
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-u-boot.png)
+![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-u-boot_v2020.07.png)
 
 ### Step 3 - Install *miniroot67.fs* on microSD card
 
@@ -141,67 +133,6 @@ minicom -8 -D /dev/ttyUSB0 -b 1500000
 
 ### Step 7 - Have fun with OpenBSD 6.7 on ROCK64!
 
-## Option 2
-
-**Required software**
-
-* Ayufan's SPI Flash image  
-[Download (latest release)](https://github.com/ayufan-rock64/linux-u-boot/releases/download/2017.09-rockchip-ayufan-1045-g9922d32c04/u-boot-flash-spi-rock64.img.xz)
-* Image *miniroot67.fs* for ARM64 from the offical OpenBSD FTP mirrors  
-[Download (Mirror Austria)](https://ftp2.eu.openbsd.org/pub/OpenBSD/6.7/arm64/miniroot67.fs)
-
-### Step 1 - Flash U-Boot in the SPI-EEPROM on the ROCK64 board  
-
-* Connect microSD card with your PC
-* Open a terminal on your PC
-* Extract Ayufan's U-Boot SPI Flash image
-```
-$ unxz u-boot-flash-spi-rock64.img.xz
-```
-* Copy the extracted image to microSD card
-```
-$ dd if=u-boot-flash-spi-rock64.img of=/dev/sdx bs=1M
-```
-* Remove the microSD card from your PC
-* Put microSD card in ROCK64
-* Connect USB-UART-TTL converter with ROCK64
-* Start the UART terminal with baud rate 1500000
-```
-$ minicom -D /dev/ttyUSB0 -b 1500000 -8
-```
-* Power-On ROCK64
-* Wait until you see in the last line "SF: 4096000 bytes @ 0x8000 **Written: OK**"
-
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-spi-flash.png)
-
-* Power-Down ROCK64
-* Remove the MicroSD from ROCK64
-
-### Step 2 - Install OpenBSD
-
-* Connect the microSD card with your PC
-* Open the terminal on your PC
-* Copy miniroot67.fs to microSD
-
-```
-$ dd if=miniroot67.fs of=/dev/sdx bs=1M
-```
-
-* Remove microSD card from PC
-* Put microSD card in the ROCK64
-* Start minicom with the baud rate 115200
-```
-minicom -8 -D /dev/ttyUSB0 -b 115200
-```
-* Power-On the ROCK64
-* Wait until you see the OpenBSD Installer:
-
-![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd_installer.png)
-
-* Install OpenBSD: Follow the steps of the OpenBSD installer
-* After successfull installation reboot OpenBSD
-
-### Step 3 - Have fun with OpenBSD 6.7 on ROCK64!
 
 ![alt text](https://github.com/krjdev/rock64_openbsd/blob/master/img/rock64-obsd_welcome.png)
 
@@ -315,20 +246,6 @@ $
 ## Limitations
 
 * HDMI output currently not working
-
-## Additional
-
-### Remove Ayufan's U-Boot from SPI flash
-
-* Remove MicroSD and eMMC (if any) from ROCK64
-* Power-On the ROCK64
-* After U-Boot booting, type the following in the U-Boot command line  
-``
-sf probe
-``  
-``
-sf erase 0 400000
-``
 
 ## Credits:
 
