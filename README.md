@@ -74,9 +74,9 @@ $ make CROSS_COMPILE=aarch64-linux-gnu-
 *NOTE*  
 Alternatively you can use my prebuilt binaries (U-Boot v2020.10):
 
-[ROC-RK3399-PC](/bin/rock64/v2020.07)  
+[ROC-RK3399-PC](/bin/roc-rk3399-pc/v2020.10)  
 
-![alt text](/img/rock64-u-boot_v2020.07.png)
+![alt text](/img/roc-rk3399-pc-u-boot_v2020.10.png)
 
 ### Step 3 - Install *miniroot67.img* on microSD card
 *NOTE*
@@ -122,7 +122,7 @@ $ cp path/to/u-boot/arch/arm/dts/rk3399-roc-pc.dtb ./rockchip
 
 ### Step 5a - Patch miniroot67.img with idbloader and u-boot
 *NOTE*
-Step 5a usable for Windows users only, because there is no dd utility in Windows.
+This step usable for Windows users only, because there is no dd utility in Windows.
 
 * Connect the microSD card with your PC
 * [Download openbsd-miniroot-patcher](https://github.com/ndhwyd/openbsd-miniroot-patcher)
@@ -130,6 +130,10 @@ Step 5a usable for Windows users only, because there is no dd utility in Windows
 ```
 MinirootPatcher.exe -m X:\path_to_miniroot67.img -i X:\path_to_idbloader.img -u X:\path_to_u-boot.itb
 ```
+*NOTE*  
+Alternatively you can use my miniroot.img:
+[Download](/bin/roc-rk3399-pc/miniroot.img)  
+
 The utility will create a file "miniroot.img" in its own directory.
 * Flash miniroot.img to microsd card with any preferred software, eg. balenaEtcher(https://www.balena.io/etcher/)
 * After copying, take out and insert the sdcard.
@@ -140,10 +144,16 @@ The utility will create a file "miniroot.img" in its own directory.
 ### Step 6 - Install OpenBSD
 
 * Put microSD card in the ROC-RK3399-PC
-* Start minicom with the baud rate 1500000
+* Start your serial terminal software with the baud rate 1500000
+
+minicom on Linux
 ```
 minicom -8 -D /dev/ttyUSB0 -b 1500000
 ```
+
+Putty on Windows
+![alt text](/img/putty-settings.png)
+
 * Power-On the ROC-RK3399-PC
 * Wait until you see the OpenBSD Installer:
 
@@ -166,9 +176,10 @@ $ dmesg
 
 ## Limitations
 
-* HDMI output currently not working
+* HDMI output working only for X
 
 ## Credits:
 
 Thanks to all people from U-Boot and the OpenBSD project.
+
 Also thanks to Johannes Krottmayer for the original guide for ROCK64.
