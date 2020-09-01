@@ -152,7 +152,9 @@ minicom -8 -D /dev/ttyUSB0 -b 1500000
 ```
 
 Putty on Windows
+
 ![alt text](/img/putty-settings.png)
+
 
 * Power-On the ROC-RK3399-PC
 * Install OpenBSD: Follow the steps of the OpenBSD installer
