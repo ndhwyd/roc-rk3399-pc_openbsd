@@ -131,11 +131,11 @@ This step usable for Windows users only, because there is no dd utility in Windo
 MinirootPatcher.exe -m X:\path_to_miniroot67.img -i X:\path_to_idbloader.img -u X:\path_to_u-boot.itb
 ```
 *NOTE*  
-Alternatively you can use my miniroot.img:
-[Download](/bin/roc-rk3399-pc/miniroot.img)  
+Alternatively you can download patched miniroot67.img from Releases
+
 
 The utility will create a file "miniroot.img" in its own directory.
-* Flash miniroot.img to microsd card with any preferred software, eg. balenaEtcher(https://www.balena.io/etcher/)
+* Flash miniroot.img to microsd card with any preferred software, eg. [balenaEtcher](https://www.balena.io/etcher/)
 * After copying, take out and insert the sdcard.
 * Open the BOOT drive in explorer
 * Create a folder named "rockchip" (no quotes)
